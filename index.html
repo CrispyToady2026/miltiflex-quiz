@@ -74,8 +74,6 @@
   .btn:disabled{opacity:0.35;cursor:not-allowed;}
   .btn-primary{background:var(--blue);border-color:var(--blue);color:#fff;}
   .btn-primary:hover:not(:disabled){opacity:0.88;}
-  .btn-green{background:var(--green);border-color:var(--green);color:#fff;}
-  .btn-green:hover:not(:disabled){opacity:0.88;}
   .btn-full{width:100%;}
   .btn-row{display:flex;gap:8px;}
   .score-bar-wrap{margin:1rem 0;}
@@ -89,18 +87,28 @@
   .big-score{font-size:56px;font-weight:700;line-height:1;}
   .result-status{font-size:16px;font-weight:600;margin:8px 0 4px;}
   .result-sub{font-size:13px;color:var(--text-3);}
+  .submit-box{border-radius:var(--radius);padding:1.25rem;margin:1.25rem 0;display:flex;align-items:flex-start;gap:14px;}
+  .submit-box.pending{background:var(--blue-bg);border:1.5px solid var(--blue);}
+  .submit-box.sending{background:var(--bg-2);border:1.5px solid var(--border);}
+  .submit-box.done{background:var(--green-bg);border:1.5px solid var(--green);}
+  .submit-box.error{background:var(--red-bg);border:1.5px solid var(--red);}
+  .submit-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+  .submit-content{flex:1;}
+  .submit-title{font-size:14px;font-weight:600;margin-bottom:4px;}
+  .submit-box.pending .submit-title{color:var(--blue-text);}
+  .submit-box.sending .submit-title{color:var(--text-2);}
+  .submit-box.done .submit-title{color:var(--green-text);}
+  .submit-box.error .submit-title{color:var(--red-text);}
+  .submit-text{font-size:13px;line-height:1.6;margin-bottom:0;}
+  .submit-box.pending .submit-text{color:var(--blue-text);opacity:0.85;}
+  .submit-box.sending .submit-text{color:var(--text-3);}
+  .submit-box.done .submit-text{color:var(--green-text);opacity:0.85;}
+  .submit-box.error .submit-text{color:var(--red-text);opacity:0.85;}
   .print-box{border:1.5px solid var(--border-2);border-radius:var(--radius);padding:1.25rem;margin:1.25rem 0;background:var(--bg-2);}
   .print-box .pb-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;}
   .print-box .pb-row:last-child{border-bottom:none;}
   .print-box .pb-label{color:var(--text-3);}
   .print-box .pb-value{font-weight:600;color:var(--text);}
-  /* Submit box */
-  .submit-box{border:2px solid var(--green);border-radius:var(--radius);padding:1.25rem;margin:1.25rem 0;background:var(--green-bg);}
-  .submit-box .sb-title{font-size:14px;font-weight:600;color:var(--green-text);margin-bottom:6px;}
-  .submit-box .sb-text{font-size:13px;color:var(--green-text);opacity:0.85;line-height:1.6;margin-bottom:1rem;}
-  .submit-box.submitted{border-color:var(--border-2);background:var(--bg-2);}
-  .submit-box.submitted .sb-title{color:var(--text-2);}
-  .submit-box.submitted .sb-text{color:var(--text-3);}
   .mod-bar-row{display:flex;align-items:center;gap:12px;margin-bottom:7px;}
   .mod-bar-row .mod-name{font-size:12px;color:var(--text-3);min-width:88px;}
   .mod-bar-track{flex:1;height:6px;background:var(--bg-3);border-radius:99px;overflow:hidden;}
@@ -126,25 +134,9 @@
 <body>
 <div id="root"></div>
 <script type="text/babel">
-const { useState } = React;
+const { useState, useEffect } = React;
 
-const FORM_BASE = "https://docs.google.com/forms/d/e/1FAIpQLSdl0Indk_1g4r2l5AqkHs9KWsir9xfvhm4EqKGx97LdDLdPCQ/viewform?usp=pp_url";
-const F_NAME  = "entry.102983070";
-const F_SCORE = "entry.1001140497";
-const F_RESULT= "entry.554162133";
-const F_PCT   = "entry.767530921";
-const F_DATE  = "entry.422251750";
-
-function buildFormUrl(name, score, total, pct, passed, timestamp) {
-  const params = new URLSearchParams({
-    [F_NAME]:  name,
-    [F_SCORE]: `${score}/${total}`,
-    [F_RESULT]: passed ? "Pass" : "Fail",
-    [F_PCT]:   `${pct}%`,
-    [F_DATE]:  timestamp,
-  });
-  return `${FORM_BASE}&${params.toString()}`;
-}
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxbuK6HV5_foXWG-ef0v0fw3FgUYNgl329DxDQe9Z8ZELDxicGI7DI6LWziv4NHtnBPVg/exec";
 
 const QUESTIONS = [
   {id:1,module:"Module 1",question:"The MULTIFLEX BLOCK\u00AE is described as the world\u2019s first of its kind. What is its patent number?",options:["402018203928-0001","DE10203928-0001","KW2018-040293","No patent \u2014 it is a trade secret"],correct:0,explanation:"Patent number 402018203928-0001 is stated on the brochure and in Module 1 of the training pack. This is the kind of detail you only know if you read the material carefully."},
@@ -180,27 +172,37 @@ function scoreColor(pct) {
 }
 
 function App() {
-  const [screen, setScreen]       = useState('register');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName]   = useState('');
-  const [nameError, setNameError] = useState('');
-  const [current, setCurrent]     = useState(0);
-  const [selected, setSelected]   = useState(null);
-  const [confirmed, setConfirmed] = useState(false);
-  const [answers, setAnswers]     = useState([]);
-  const [filter, setFilter]       = useState('all');
-  const [reviewIdx, setReviewIdx] = useState(null);
-  const [submitted, setSubmitted] = useState(false);
-  const [startTime]               = useState(() => Date.now());
+  const [screen, setScreen]         = useState('register');
+  const [firstName, setFirstName]   = useState('');
+  const [lastName, setLastName]     = useState('');
+  const [nameError, setNameError]   = useState('');
+  const [current, setCurrent]       = useState(0);
+  const [selected, setSelected]     = useState(null);
+  const [confirmed, setConfirmed]   = useState(false);
+  const [answers, setAnswers]       = useState([]);
+  const [filter, setFilter]         = useState('all');
+  const [reviewIdx, setReviewIdx]   = useState(null);
+  const [submitState, setSubmitState] = useState('idle'); // idle | sending | done | error
+  const [startTime]                 = useState(() => Date.now());
   const [finishTime, setFinishTime] = useState(null);
-  const [timestamp]               = useState(() => getTimestamp());
+  const [timestamp]                 = useState(() => getTimestamp());
 
   const fullName = (firstName.trim() + ' ' + lastName.trim()).trim();
   const q        = QUESTIONS[current];
   const score    = answers.filter(a => a.selected === a.correct).length;
 
+  // Auto-submit as soon as results screen loads
+  useEffect(() => {
+    if (screen === 'results' && submitState === 'idle') {
+      submitResults();
+    }
+  }, [screen]);
+
   function startQuiz() {
-    if (!firstName.trim() || !lastName.trim()) { setNameError('Please enter both your first and last name to continue.'); return; }
+    if (!firstName.trim() || !lastName.trim()) {
+      setNameError('Please enter both your first and last name to continue.');
+      return;
+    }
     setNameError('');
     setScreen('quiz');
   }
@@ -212,26 +214,48 @@ function App() {
   }
 
   function nextQuestion() {
-    if (current === TOTAL - 1) { setFinishTime(Date.now()); setScreen('results'); }
-    else { setCurrent(c => c+1); setSelected(null); setConfirmed(false); }
+    if (current === TOTAL - 1) {
+      setFinishTime(Date.now());
+      setScreen('results');
+    } else {
+      setCurrent(c => c + 1);
+      setSelected(null);
+      setConfirmed(false);
+    }
   }
 
   function submitResults() {
     const pct    = Math.round((score / TOTAL) * 100);
     const passed = score >= PASS_MARK;
-    const url    = buildFormUrl(fullName, score, TOTAL, pct, passed, timestamp);
-    window.open(url, '_blank');
-    setSubmitted(true);
+    const elapsed = finishTime ? Math.round((finishTime - startTime) / 60000) : Math.round((Date.now() - startTime) / 60000);
+    setSubmitState('sending');
+    const payload = {
+      timestamp,
+      name:      fullName,
+      score,
+      total:     TOTAL,
+      percentage: pct,
+      result:    passed ? 'Pass' : 'Fail',
+      timeTaken: elapsed
+    };
+    fetch(SCRIPT_URL, {
+      method:  'POST',
+      mode:    'no-cors',
+      headers: {'Content-Type':'application/json'},
+      body:    JSON.stringify(payload)
+    })
+    .then(() => setSubmitState('done'))
+    .catch(() => setSubmitState('error'));
   }
 
   function retake() {
     setCurrent(0); setSelected(null); setConfirmed(false);
     setAnswers([]); setFilter('all'); setReviewIdx(null);
-    setSubmitted(false); setFinishTime(null);
+    setSubmitState('idle'); setFinishTime(null);
     setScreen('register'); setFirstName(''); setLastName('');
   }
 
-  // REGISTER
+  // ── REGISTER ─────────────────────────────────────────────────
   if (screen === 'register') return (
     <div>
       <header className="page-header">
@@ -249,7 +273,7 @@ function App() {
         <div className="info-box">
           <div className="title">Before you begin</div>
           <p>These questions are drawn directly from the MULTIFLEX BLOCK&#174; training pack. Several are designed to distinguish people who read the material carefully from those who skimmed it.</p>
-          <p>When you finish, you will be asked to submit your result. This takes one click and sends your name, score, and pass/fail status to the training record.</p>
+          <p>Your result will be recorded automatically when you finish. No extra steps required.</p>
         </div>
         <div className="name-form">
           <label htmlFor="fname">Your name</label>
@@ -264,7 +288,7 @@ function App() {
     </div>
   );
 
-  // QUIZ
+  // ── QUIZ ──────────────────────────────────────────────────────
   if (screen === 'quiz') {
     const progress = Math.round((current / TOTAL) * 100);
     return (
@@ -310,7 +334,7 @@ function App() {
     );
   }
 
-  // RESULTS
+  // ── RESULTS ───────────────────────────────────────────────────
   if (screen === 'results') {
     const pct    = Math.round((score / TOTAL) * 100);
     const passed = score >= PASS_MARK;
@@ -323,6 +347,15 @@ function App() {
       const mc = ma.filter(a=>a.selected===a.correct).length;
       return {mod, correct:mc, total:ma.length};
     });
+
+    // Status indicator config
+    const statusConfig = {
+      idle:    {cls:'pending', icon:'📋', title:'Recording your result...', text:''},
+      sending: {cls:'sending', icon:'⏳', title:'Recording your result...', text:'Please wait a moment.'},
+      done:    {cls:'done',    icon:'✓',  title:'Result recorded', text:'Your score has been saved to the training record automatically.'},
+      error:   {cls:'error',   icon:'!',  title:'Could not save automatically', text:'Please take a screenshot of your result below and send it to your manager.'},
+    };
+    const st = statusConfig[submitState];
 
     if (reviewIdx !== null) {
       const rq = QUESTIONS[reviewIdx];
@@ -363,6 +396,7 @@ function App() {
           <div><div className="logo">MULTIFLEX BLOCK&#174; &mdash; Results</div><div className="sub">{fullName}</div></div>
         </header>
         <div className="container">
+
           <div className="results-hero">
             <div className="results-name">{fullName}</div>
             <div className="big-score" style={{color:scoreColor(pct)}}>{pct}%</div>
@@ -370,23 +404,19 @@ function App() {
             <div className="result-sub">{score} correct out of {TOTAL} &mdash; pass mark {PASS_MARK}/{TOTAL}</div>
           </div>
 
-          {/* Submit box */}
-          <div className={`submit-box${submitted?' submitted':''}`}>
-            {!submitted ? (
-              <>
-                <div className="sb-title">&#128203; Submit your results</div>
-                <div className="sb-text">Click below to send your name, score, and result to the training record. This takes one click and opens a short confirmation form.</div>
-                <button className="btn btn-green btn-full" onClick={submitResults}>Submit results &rarr;</button>
-              </>
-            ) : (
-              <>
-                <div className="sb-title">&#10003; Results submitted</div>
-                <div className="sb-text">Your result has been sent to the training record. You can close this tab or retake the assessment below.</div>
-              </>
-            )}
+          {/* Auto-submit status */}
+          <div className={`submit-box ${st.cls}`}>
+            <div className="submit-icon">{st.icon}</div>
+            <div className="submit-content">
+              <div className="submit-title">{st.title}</div>
+              {st.text && <div className="submit-text">{st.text}</div>}
+              {submitState === 'error' && (
+                <button className="btn btn-primary" style={{marginTop:10}} onClick={submitResults}>Try again</button>
+              )}
+            </div>
           </div>
 
-          {/* Summary card */}
+          {/* Summary */}
           <div className="print-box">
             <div className="pb-row"><span className="pb-label">Candidate</span><span className="pb-value">{fullName}</span></div>
             <div className="pb-row"><span className="pb-label">Assessment</span><span className="pb-value">MULTIFLEX BLOCK&#174; Product Knowledge</span></div>
