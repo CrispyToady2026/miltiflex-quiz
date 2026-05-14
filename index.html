@@ -30,67 +30,38 @@
   }
   html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:16px;line-height:1.6;}
   #root{min-height:100vh;display:flex;flex-direction:column;}
-
   .page-header{background:var(--bg);border-bottom:1px solid var(--border);padding:13px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10;}
   .page-header .logo{font-size:13px;font-weight:600;color:var(--text);}
   .page-header .sub{font-size:11px;color:var(--text-3);margin-top:1px;}
-  .header-right{text-align:right;}
-
   .container{max-width:660px;margin:0 auto;padding:2.5rem 1.5rem 4rem;width:100%;}
-
   .meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:1.5rem 0;}
   .meta-card{background:var(--bg-2);border-radius:var(--radius-sm);padding:0.875rem 1rem;}
   .meta-card .val{font-size:20px;font-weight:600;color:var(--text);line-height:1.1;margin-bottom:3px;}
   .meta-card .lbl{font-size:12px;color:var(--text-3);}
-
   .info-box{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.125rem;margin:1rem 0;}
   .info-box .title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:0.5rem;}
   .info-box p{font-size:13px;color:var(--text-2);line-height:1.65;margin-bottom:0.35rem;}
   .info-box p:last-child{margin-bottom:0;}
-
-  /* Name form */
   .name-form{display:flex;flex-direction:column;gap:8px;margin:1.5rem 0;}
   .name-form label{font-size:13px;font-weight:500;color:var(--text-2);}
   .name-row{display:flex;gap:8px;}
-  .name-input{
-    flex:1;padding:0.65rem 0.875rem;
-    border:1.5px solid var(--border-2);border-radius:var(--radius-sm);
-    background:var(--bg);color:var(--text);font-size:14px;
-    outline:none;transition:border-color 0.15s;
-  }
+  .name-input{flex:1;padding:0.65rem 0.875rem;border:1.5px solid var(--border-2);border-radius:var(--radius-sm);background:var(--bg);color:var(--text);font-size:14px;outline:none;transition:border-color 0.15s;}
   .name-input:focus{border-color:var(--blue);}
   .name-input::placeholder{color:var(--text-3);}
-
-  /* Progress */
   .progress-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
   .progress-row .mod-tag{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-3);}
   .progress-row .q-count{font-size:12px;color:var(--text-3);}
   .progress-track{height:4px;background:var(--bg-3);border-radius:99px;overflow:hidden;margin-bottom:1.75rem;}
   .progress-fill{height:100%;background:var(--blue);border-radius:99px;transition:width 0.3s ease;}
-
   .question-text{font-size:16px;font-weight:500;line-height:1.55;color:var(--text);margin-bottom:1.25rem;}
-
   .options{display:flex;flex-direction:column;gap:9px;margin-bottom:1.25rem;}
-  .option-btn{
-    display:flex;align-items:flex-start;gap:11px;
-    width:100%;text-align:left;padding:0.8rem 1rem;
-    border:1.5px solid var(--border-2);border-radius:var(--radius);
-    background:var(--bg);color:var(--text);
-    font-size:14px;line-height:1.5;cursor:pointer;
-    transition:border-color 0.15s,background 0.15s;
-  }
+  .option-btn{display:flex;align-items:flex-start;gap:11px;width:100%;text-align:left;padding:0.8rem 1rem;border:1.5px solid var(--border-2);border-radius:var(--radius);background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;cursor:pointer;transition:border-color 0.15s,background 0.15s;}
   .option-btn:hover:not(:disabled){border-color:var(--blue);background:var(--blue-bg);}
   .option-btn:disabled{cursor:default;}
   .option-btn.selected{border-color:var(--blue);background:var(--blue-bg);color:var(--blue-text);}
   .option-btn.correct{border-color:var(--green);background:var(--green-bg);color:var(--green-text);}
   .option-btn.wrong{border-color:var(--red);background:var(--red-bg);color:var(--red-text);}
-  .option-letter{
-    min-width:22px;height:22px;border-radius:50%;
-    border:1.5px solid currentColor;
-    display:flex;align-items:center;justify-content:center;
-    font-size:11px;font-weight:600;flex-shrink:0;margin-top:1px;
-  }
-
+  .option-letter{min-width:22px;height:22px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;margin-top:1px;}
   .explanation{border-radius:var(--radius);padding:0.875rem 1rem;margin-bottom:1.25rem;border-left:3px solid;}
   .explanation.correct-exp{border-color:var(--green);background:var(--green-bg);}
   .explanation.wrong-exp{border-color:var(--red);background:var(--red-bg);}
@@ -98,63 +69,47 @@
   .explanation .exp-text{font-size:13px;line-height:1.65;}
   .explanation.correct-exp .exp-label,.explanation.correct-exp .exp-text{color:var(--green-text);}
   .explanation.wrong-exp .exp-label,.explanation.wrong-exp .exp-text{color:var(--red-text);}
-
-  .btn{
-    display:inline-flex;align-items:center;justify-content:center;
-    padding:0.65rem 1.25rem;border:1.5px solid var(--border-2);
-    border-radius:var(--radius-sm);background:var(--bg);color:var(--text);
-    font-size:14px;font-weight:500;cursor:pointer;
-    transition:background 0.15s,border-color 0.15s;
-  }
+  .btn{display:inline-flex;align-items:center;justify-content:center;padding:0.65rem 1.25rem;border:1.5px solid var(--border-2);border-radius:var(--radius-sm);background:var(--bg);color:var(--text);font-size:14px;font-weight:500;cursor:pointer;transition:background 0.15s,border-color 0.15s;}
   .btn:hover:not(:disabled){background:var(--bg-2);}
   .btn:disabled{opacity:0.35;cursor:not-allowed;}
   .btn-primary{background:var(--blue);border-color:var(--blue);color:#fff;}
   .btn-primary:hover:not(:disabled){opacity:0.88;}
+  .btn-green{background:var(--green);border-color:var(--green);color:#fff;}
+  .btn-green:hover:not(:disabled){opacity:0.88;}
   .btn-full{width:100%;}
   .btn-row{display:flex;gap:8px;}
-
   .score-bar-wrap{margin:1rem 0;}
   .score-bar-row{display:flex;justify-content:space-between;margin-bottom:6px;}
   .score-bar-row .lbl{font-size:13px;color:var(--text-3);}
   .score-bar-row .val{font-size:13px;font-weight:600;}
   .score-track{height:8px;background:var(--bg-3);border-radius:99px;overflow:hidden;}
   .score-fill{height:100%;border-radius:99px;transition:width 0.6s ease;}
-
-  /* Results hero */
   .results-hero{text-align:center;padding:2rem 0 1.25rem;}
   .results-name{font-size:13px;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:8px;}
   .big-score{font-size:56px;font-weight:700;line-height:1;}
   .result-status{font-size:16px;font-weight:600;margin:8px 0 4px;}
   .result-sub{font-size:13px;color:var(--text-3);}
-
-  /* Print result */
-  .print-box{
-    border:1.5px solid var(--border-2);border-radius:var(--radius);
-    padding:1.25rem;margin:1.25rem 0;
-    background:var(--bg-2);
-  }
+  .print-box{border:1.5px solid var(--border-2);border-radius:var(--radius);padding:1.25rem;margin:1.25rem 0;background:var(--bg-2);}
   .print-box .pb-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:13px;}
   .print-box .pb-row:last-child{border-bottom:none;}
   .print-box .pb-label{color:var(--text-3);}
   .print-box .pb-value{font-weight:600;color:var(--text);}
-
+  /* Submit box */
+  .submit-box{border:2px solid var(--green);border-radius:var(--radius);padding:1.25rem;margin:1.25rem 0;background:var(--green-bg);}
+  .submit-box .sb-title{font-size:14px;font-weight:600;color:var(--green-text);margin-bottom:6px;}
+  .submit-box .sb-text{font-size:13px;color:var(--green-text);opacity:0.85;line-height:1.6;margin-bottom:1rem;}
+  .submit-box.submitted{border-color:var(--border-2);background:var(--bg-2);}
+  .submit-box.submitted .sb-title{color:var(--text-2);}
+  .submit-box.submitted .sb-text{color:var(--text-3);}
   .mod-bar-row{display:flex;align-items:center;gap:12px;margin-bottom:7px;}
   .mod-bar-row .mod-name{font-size:12px;color:var(--text-3);min-width:88px;}
   .mod-bar-track{flex:1;height:6px;background:var(--bg-3);border-radius:99px;overflow:hidden;}
   .mod-bar-fill{height:100%;border-radius:99px;}
   .mod-bar-row .mod-score{font-size:12px;color:var(--text-3);min-width:28px;text-align:right;}
-
   .filter-row{display:flex;gap:6px;margin-bottom:1rem;}
   .filter-btn{flex:1;padding:0.5rem;font-size:13px;border:1px solid var(--border);border-radius:var(--radius-sm);background:transparent;color:var(--text-2);cursor:pointer;transition:background 0.12s;}
   .filter-btn.active{background:var(--bg-2);color:var(--text);font-weight:600;border-color:var(--border-2);}
-
-  .review-item{
-    display:flex;flex-direction:column;width:100%;text-align:left;
-    padding:0.75rem 1rem;
-    border:0.5px solid var(--border);border-left:3px solid;
-    border-radius:var(--radius);background:var(--bg);cursor:pointer;
-    margin-bottom:7px;transition:background 0.12s;
-  }
+  .review-item{display:flex;flex-direction:column;width:100%;text-align:left;padding:0.75rem 1rem;border:0.5px solid var(--border);border-left:3px solid;border-radius:var(--radius);background:var(--bg);cursor:pointer;margin-bottom:7px;transition:background 0.12s;}
   .review-item:hover{background:var(--bg-2);}
   .review-item.ri-correct{border-left-color:var(--green);}
   .review-item.ri-wrong{border-left-color:var(--red);}
@@ -163,206 +118,89 @@
   .review-item-status.s-correct{font-size:11px;font-weight:600;color:var(--green);}
   .review-item-status.s-wrong{font-size:11px;font-weight:600;color:var(--red);}
   .review-item-q{font-size:13px;color:var(--text);line-height:1.4;}
-
   .section-label{font-size:13px;font-weight:600;color:var(--text);margin:1.5rem 0 0.75rem;}
   .divider{height:1px;background:var(--border);margin:1.5rem 0;}
-
-  @media print {
-    .no-print{display:none!important;}
-    .page-header{position:static;}
-    body{background:#fff;color:#000;}
-  }
-  @media(max-width:480px){
-    .container{padding:1.5rem 1rem 3rem;}
-    .big-score{font-size:42px;}
-    .meta-grid{grid-template-columns:1fr 1fr;}
-    .name-row{flex-direction:column;}
-  }
+  @media(max-width:480px){.container{padding:1.5rem 1rem 3rem;}.big-score{font-size:42px;}.meta-grid{grid-template-columns:1fr 1fr;}.name-row{flex-direction:column;}}
 </style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel">
-const { useState, useRef } = React;
+const { useState } = React;
+
+const FORM_BASE = "https://docs.google.com/forms/d/e/1FAIpQLSdl0Indk_1g4r2l5AqkHs9KWsir9xfvhm4EqKGx97LdDLdPCQ/viewform?usp=pp_url";
+const F_NAME  = "entry.102983070";
+const F_SCORE = "entry.1001140497";
+const F_RESULT= "entry.554162133";
+const F_PCT   = "entry.767530921";
+const F_DATE  = "entry.422251750";
+
+function buildFormUrl(name, score, total, pct, passed, timestamp) {
+  const params = new URLSearchParams({
+    [F_NAME]:  name,
+    [F_SCORE]: `${score}/${total}`,
+    [F_RESULT]: passed ? "Pass" : "Fail",
+    [F_PCT]:   `${pct}%`,
+    [F_DATE]:  timestamp,
+  });
+  return `${FORM_BASE}&${params.toString()}`;
+}
 
 const QUESTIONS = [
-  {
-    id:1, module:"Module 1",
-    question:"The MULTIFLEX BLOCK\u00AE is described as the world\u2019s first of its kind. What is its patent number?",
-    options:["402018203928-0001","DE10203928-0001","KW2018-040293","No patent \u2014 it is a trade secret"],
-    correct:0,
-    explanation:"Patent number 402018203928-0001 is stated on the brochure and in Module 1 of the training pack. This is the kind of detail you only know if you read the material carefully."
-  },
-  {
-    id:2, module:"Module 2",
-    question:"The MULTIFLEX BLOCK\u00AE operates on two planes. How many ports does the horizontal plane provide, and what is their primary function?",
-    options:["2 ports \u2014 for ventilation and monitoring","4 ports \u2014 for filling and extraction","6 ports \u2014 for filling, extraction, and venting","4 ports \u2014 for ventilation and level monitoring"],
-    correct:1,
-    explanation:"The horizontal plane has 4 T-bore ports (up to G2\u201D internal thread) specifically designed for filling and extraction. The vertical plane handles ventilation and monitoring."
-  },
-  {
-    id:3, module:"Module 2",
-    question:"What thread type does the MULTIFLEX BLOCK\u00AE use, and why does this matter commercially?",
-    options:["Metric thread \u2014 standard in European industrial settings","BSP inch thread \u2014 compatible with most existing industrial connections without adapters","NPT thread \u2014 required for ATEX compliance","Tri-Clamp thread \u2014 required for food-grade applications"],
-    correct:1,
-    explanation:"The MULTIFLEX BLOCK\u00AE uses inch (BSP) threads, which means it connects to virtually any existing infrastructure without special adapters. This is a key selling point for retrofit installations."
-  },
-  {
-    id:4, module:"Module 2",
-    question:"What operating pressure does the MULTIFLEX BLOCK\u00AE support?",
-    options:["Up to 6 bar","Up to 10 bar","Pressureless operation only","Up to 2 bar \u2014 low pressure only"],
-    correct:2,
-    explanation:"The MULTIFLEX BLOCK\u00AE is designed for pressureless operation only. This is a critical technical detail \u2014 it is not suitable for pressurised line applications."
-  },
-  {
-    id:5, module:"Module 3",
-    question:"A customer in a food manufacturing plant needs to handle flavour syrups in IBCs. They ask if the standard Industrial (PE Natural) version is fine. What is the correct response?",
-    options:["Yes \u2014 PE Natural is FDA compliant in all its forms","No \u2014 they need the Food Version, specifically certified to FDA and EU 10/2011 / EFSA standards","Yes \u2014 all MULTIFLEX BLOCK\u00AE versions are food safe","No \u2014 they must use the PVDF version for food applications"],
-    correct:1,
-    explanation:"The Industrial PE Natural version is NOT food-certified. The Food Version is a separate SKU specifically manufactured and certified to FDA and EU 10/2011 (EFSA) standards. Recommending the wrong version here is a compliance failure."
-  },
-  {
-    id:6, module:"Module 3",
-    question:"What is the defining physical characteristic that distinguishes the ATEX version from all other versions at a glance?",
-    options:["It has a yellow safety cap on the vent port","It is entirely black \u2014 body and all fittings are PE-EL (electrically conductive)","It has a red warning band around the base","It carries a visible ATEX symbol embossed on the body"],
-    correct:1,
-    explanation:"The ATEX version (PE-EL) is entirely black. This is deliberate \u2014 electrically conductive PE is black by nature of the carbon black added to make it conductive. All Industrial/Food versions are white. Colour identification matters in the field."
-  },
-  {
-    id:7, module:"Module 3",
-    question:"For which specific explosive atmosphere zones is the ATEX version of the MULTIFLEX BLOCK\u00AE rated?",
-    options:["Zones 0, 1, and 2","Zone 2 only","Zones 1 and 2","All ATEX zones including Zone 0"],
-    correct:2,
-    explanation:"The ATEX version is specifically designed for Ex Zones 1 and 2. Zone 0 (continuous explosive atmosphere) requires a different risk management approach and is not covered."
-  },
-  {
-    id:8, module:"Module 3",
-    question:"In addition to PE-EL, what two other materials are available for the ATEX version?",
-    options:["PP and ABS","PVDF and stainless steel","PVDF and PVC-C","POM and PTFE"],
-    correct:1,
-    explanation:"The training pack states: \u2018Also available in PVDF and stainless steel.\u2019 This is important for customers handling highly aggressive media in ATEX zones where PE-EL alone may not offer sufficient chemical resistance."
-  },
-  {
-    id:9, module:"Module 4",
-    question:"What is the purpose of the ball check valve in a fully configured MULTIFLEX BLOCK\u00AE system?",
-    options:["It controls the flow rate during extraction","It prevents back-flow and siphoning, fitted at the base of the filler tube","It provides a non-return function on the vent port","It isolates the container when not in use"],
-    correct:1,
-    explanation:"The ball check valve is fitted at the bottom of the filler tube inside the IBC. It prevents liquid from siphoning back through the tube when filling stops, and prevents back-flow during extraction."
-  },
-  {
-    id:10, module:"Module 4",
-    question:"What does a pH indicator cartridge tell the operator in an acid-handling setup?",
-    options:["The pH level of the liquid inside the IBC","Whether the IBC is reaching maximum capacity","When the absorber/binder media in the venting system needs replacing","The temperature of the vapour in the vent line"],
-    correct:2,
-    explanation:"The pH indicator cartridge is fitted to the venting system (absorber), not the liquid. It changes colour to signal when the acid-neutralising binder media is exhausted and needs replacement \u2014 a safety-critical maintenance indicator."
-  },
-  {
-    id:11, module:"Module 4",
-    question:"All fittings in the MULTIFLEX BLOCK\u00AE accessory range share a specific geometric feature. What is it, and why does it matter?",
-    options:["They are all hexagonal \u2014 for standard spanner engagement","They are all 10-cornered \u2014 for secure tool engagement","They are all round \u2014 to prevent over-tightening","They are all square-drive \u2014 compatible with torque wrenches"],
-    correct:1,
-    explanation:"All MULTIFLEX BLOCK\u00AE fittings are 10-cornered. This distinctive geometry provides secure tool engagement and is specified in the product documentation. It\u2019s a detail that confirms careful reading of the material."
-  },
-  {
-    id:12, module:"Module 5",
-    question:"Which of the following best describes where in a customer\u2019s workflow the MULTIFLEX BLOCK\u00AE can be deployed?",
-    options:["Only at the point of use \u2014 dispensing to process equipment","Only at goods-in \u2014 filling IBCs from bulk deliveries","At any stage: goods-in, storage, point-of-use, and container-to-container transfer","Only during storage \u2014 it is not suitable for active filling or extraction"],
-    correct:2,
-    explanation:"Module 5 is explicit: the MULTIFLEX BLOCK\u00AE can be used at goods-in/filling, during storage monitoring, at point-of-use dispensing, and for container-to-container transfers. This versatility is one of its key selling points."
-  },
-  {
-    id:13, module:"Module 6",
-    question:"A customer asks whether the MULTIFLEX BLOCK\u00AE cover can be accidentally opened during operation. What is the correct answer based on the technical specification?",
-    options:["Yes \u2014 a locking clip must be added separately","No \u2014 the cover uses a rotatable insert in a captive design, preventing accidental removal","Yes \u2014 this is a known limitation mitigated by procedural controls","No \u2014 a tamper-evident seal is included in the standard kit"],
-    correct:1,
-    explanation:"The training pack specifies that the cover incorporates a rotatable insert in captive design. \u2018Captive\u2019 is the key word \u2014 it cannot be accidentally removed. This is an engineered safety feature, not a procedural control."
-  },
-  {
-    id:14, module:"Module 6",
-    question:"A colleague tells a customer the standard Industrial PE Natural MULTIFLEX BLOCK\u00AE is fine for Zone 2 because \u2018the customer will ground it anyway.\u2019 What is wrong with this advice?",
-    options:["Nothing \u2014 grounding is sufficient for Zone 2 compliance","The Industrial version cannot be grounded at all","Only the ATEX (PE-EL) version is compliant for Zone 2 \u2014 PE Natural is not conductive and cannot prevent static build-up regardless of grounding","The customer should use PVDF, not PE-EL, for Zone 2"],
-    correct:2,
-    explanation:"This is a critical safety error. PE Natural is not electrically conductive \u2014 it cannot dissipate static charge regardless of external grounding. In a Zone 2 environment with flammable liquids, this creates a genuine ignition risk. Only PE-EL (or PVDF/stainless) provides the conductivity needed for ATEX compliance."
-  },
-  {
-    id:15, module:"Module 7",
-    question:"The online MULTIFLEX BLOCK\u00AE configurator walks users through four steps. What is the correct order?",
-    options:["Configuration \u2192 Material \u2192 Overview \u2192 Add to basket","Material \u2192 Configuration \u2192 Overview \u2192 Add to basket","Overview \u2192 Material \u2192 Configuration \u2192 Add to basket","Material \u2192 Overview \u2192 Configuration \u2192 Add to basket"],
-    correct:1,
-    explanation:"The correct sequence is: (1) Material/Version, (2) Configuration of ports, (3) Overview/review, (4) Add to basket. Starting with material selection makes sense \u2014 the version drives everything else."
-  },
-  {
-    id:16, module:"Module 7",
-    question:"What DN sizes is the MULTIFLEX BLOCK\u00AE compatible with?",
-    options:["DN 100, DN 150, DN 200","DN 150, DN 200, DN 400","DN 200, DN 300, DN 400","DN 100, DN 200, DN 400"],
-    correct:1,
-    explanation:"The MULTIFLEX BLOCK\u00AE fits standard IBC covers of DN 150, DN 200, and DN 400. DN 100 and DN 300 are not listed. Always confirm the DN size with the customer before ordering."
-  },
-  {
-    id:17, module:"Module 7",
-    question:"A customer is handling hydrochloric acid in IBCs (non-ATEX site). Which configuration from the training pack is the most appropriate starting point?",
-    options:["Basic Industrial \u2014 hose nozzle 2\u201D, milk pipe thread 1\u00BC\u201D, blind plugs","Food version with Tri-Clamp connections","Industrial or PVDF version, plus acid vapour separator, pH indicator cartridge, filler tube, ball check valve, and suction lance","ATEX version only \u2014 HCl is a flammable liquid"],
-    correct:2,
-    explanation:"Module 7 uses HCl as a specific worked example and lists exactly this combination. HCl is corrosive but not flammable \u2014 ATEX is not required unless the site is classified. The acid vapour separator and pH indicator are essential for safe venting."
-  },
-  {
-    id:18, module:"Module 8",
-    question:"Kwerk GmbH is headquartered in which German town?",
-    options:["Frankfurt am Main","D\u00FCsseldorf","Montabaur","Koblenz"],
-    correct:2,
-    explanation:"Kwerk GmbH is located at Bahnhofsplatz 6, D-56410 Montabaur, Germany. This appears on the brochure, the product page, and the Quick Reference Card in the training pack."
-  },
-  {
-    id:19, module:"Module 9",
-    question:"In the context of the MULTIFLEX BLOCK\u00AE, what does \u2018T-bore\u2019 describe?",
-    options:["A tapered bore thread profile used for gas-tight sealing","A port configuration where the bore passes all the way through, creating a T-shaped flow path allowing two connections at one level","A type of valve bore used in the ATEX version only","The thread profile of the DN 150 screw cap"],
-    correct:1,
-    explanation:"The glossary in Module 9 defines T-bore precisely: a port configuration where the bore passes through the block creating a T-shaped flow path. This allows simultaneous connection of two components at the same horizontal level."
-  },
-  {
-    id:20, module:"Quick Reference",
-    question:"A customer needs to handle a highly concentrated acid at elevated temperature in a non-ATEX environment. The standard Industrial PE Natural version has been suggested. What should you recommend instead, and why?",
-    options:["Food version \u2014 it has higher chemical resistance due to FDA certification","ATEX version \u2014 all strong acids require ATEX equipment","PVDF version \u2014 it offers superior chemical resistance and temperature capability where PE alone is insufficient","PE Natural is suitable \u2014 concentration and temperature do not affect material selection"],
-    correct:2,
-    explanation:"PVDF is the correct choice for concentrated acids at elevated temperatures. It is one of the most chemically resistant thermoplastics available. PE Natural has limits on concentration and temperature that PVDF exceeds. FDA certification has nothing to do with chemical resistance in industrial applications."
-  }
+  {id:1,module:"Module 1",question:"The MULTIFLEX BLOCK\u00AE is described as the world\u2019s first of its kind. What is its patent number?",options:["402018203928-0001","DE10203928-0001","KW2018-040293","No patent \u2014 it is a trade secret"],correct:0,explanation:"Patent number 402018203928-0001 is stated on the brochure and in Module 1 of the training pack. This is the kind of detail you only know if you read the material carefully."},
+  {id:2,module:"Module 2",question:"The MULTIFLEX BLOCK\u00AE operates on two planes. How many ports does the horizontal plane provide, and what is their primary function?",options:["2 ports \u2014 for ventilation and monitoring","4 ports \u2014 for filling and extraction","6 ports \u2014 for filling, extraction, and venting","4 ports \u2014 for ventilation and level monitoring"],correct:1,explanation:"The horizontal plane has 4 T-bore ports (up to G2\u201D internal thread) specifically designed for filling and extraction. The vertical plane handles ventilation and monitoring."},
+  {id:3,module:"Module 2",question:"What thread type does the MULTIFLEX BLOCK\u00AE use, and why does this matter commercially?",options:["Metric thread \u2014 standard in European industrial settings","BSP inch thread \u2014 compatible with most existing industrial connections without adapters","NPT thread \u2014 required for ATEX compliance","Tri-Clamp thread \u2014 required for food-grade applications"],correct:1,explanation:"The MULTIFLEX BLOCK\u00AE uses inch (BSP) threads, which means it connects to virtually any existing infrastructure without special adapters. This is a key selling point for retrofit installations."},
+  {id:4,module:"Module 2",question:"What operating pressure does the MULTIFLEX BLOCK\u00AE support?",options:["Up to 6 bar","Up to 10 bar","Pressureless operation only","Up to 2 bar \u2014 low pressure only"],correct:2,explanation:"The MULTIFLEX BLOCK\u00AE is designed for pressureless operation only. This is a critical technical detail \u2014 it is not suitable for pressurised line applications."},
+  {id:5,module:"Module 3",question:"A customer in a food manufacturing plant needs to handle flavour syrups in IBCs. They ask if the standard Industrial (PE Natural) version is fine. What is the correct response?",options:["Yes \u2014 PE Natural is FDA compliant in all its forms","No \u2014 they need the Food Version, specifically certified to FDA and EU 10/2011 / EFSA standards","Yes \u2014 all MULTIFLEX BLOCK\u00AE versions are food safe","No \u2014 they must use the PVDF version for food applications"],correct:1,explanation:"The Industrial PE Natural version is NOT food-certified. The Food Version is a separate SKU specifically manufactured and certified to FDA and EU 10/2011 (EFSA) standards. Recommending the wrong version here is a compliance failure."},
+  {id:6,module:"Module 3",question:"What is the defining physical characteristic that distinguishes the ATEX version from all other versions at a glance?",options:["It has a yellow safety cap on the vent port","It is entirely black \u2014 body and all fittings are PE-EL (electrically conductive)","It has a red warning band around the base","It carries a visible ATEX symbol embossed on the body"],correct:1,explanation:"The ATEX version (PE-EL) is entirely black. This is deliberate \u2014 electrically conductive PE is black by nature of the carbon black added to make it conductive. All Industrial/Food versions are white. Colour identification matters in the field."},
+  {id:7,module:"Module 3",question:"For which specific explosive atmosphere zones is the ATEX version of the MULTIFLEX BLOCK\u00AE rated?",options:["Zones 0, 1, and 2","Zone 2 only","Zones 1 and 2","All ATEX zones including Zone 0"],correct:2,explanation:"The ATEX version is specifically designed for Ex Zones 1 and 2. Zone 0 (continuous explosive atmosphere) requires a different risk management approach and is not covered."},
+  {id:8,module:"Module 3",question:"In addition to PE-EL, what two other materials are available for the ATEX version?",options:["PP and ABS","PVDF and stainless steel","PVDF and PVC-C","POM and PTFE"],correct:1,explanation:"The training pack states: \u2018Also available in PVDF and stainless steel.\u2019 This is important for customers handling highly aggressive media in ATEX zones where PE-EL alone may not offer sufficient chemical resistance."},
+  {id:9,module:"Module 4",question:"What is the purpose of the ball check valve in a fully configured MULTIFLEX BLOCK\u00AE system?",options:["It controls the flow rate during extraction","It prevents back-flow and siphoning, fitted at the base of the filler tube","It provides a non-return function on the vent port","It isolates the container when not in use"],correct:1,explanation:"The ball check valve is fitted at the bottom of the filler tube inside the IBC. It prevents liquid from siphoning back through the tube when filling stops, and prevents back-flow during extraction."},
+  {id:10,module:"Module 4",question:"What does a pH indicator cartridge tell the operator in an acid-handling setup?",options:["The pH level of the liquid inside the IBC","Whether the IBC is reaching maximum capacity","When the absorber/binder media in the venting system needs replacing","The temperature of the vapour in the vent line"],correct:2,explanation:"The pH indicator cartridge is fitted to the venting system (absorber), not the liquid. It changes colour to signal when the acid-neutralising binder media is exhausted and needs replacement \u2014 a safety-critical maintenance indicator."},
+  {id:11,module:"Module 4",question:"All fittings in the MULTIFLEX BLOCK\u00AE accessory range share a specific geometric feature. What is it, and why does it matter?",options:["They are all hexagonal \u2014 for standard spanner engagement","They are all 10-cornered \u2014 for secure tool engagement","They are all round \u2014 to prevent over-tightening","They are all square-drive \u2014 compatible with torque wrenches"],correct:1,explanation:"All MULTIFLEX BLOCK\u00AE fittings are 10-cornered. This distinctive geometry provides secure tool engagement and is specified in the product documentation. It\u2019s a detail that confirms careful reading of the material."},
+  {id:12,module:"Module 5",question:"Which of the following best describes where in a customer\u2019s workflow the MULTIFLEX BLOCK\u00AE can be deployed?",options:["Only at the point of use \u2014 dispensing to process equipment","Only at goods-in \u2014 filling IBCs from bulk deliveries","At any stage: goods-in, storage, point-of-use, and container-to-container transfer","Only during storage \u2014 it is not suitable for active filling or extraction"],correct:2,explanation:"Module 5 is explicit: the MULTIFLEX BLOCK\u00AE can be used at goods-in/filling, during storage monitoring, at point-of-use dispensing, and for container-to-container transfers. This versatility is one of its key selling points."},
+  {id:13,module:"Module 6",question:"A customer asks whether the MULTIFLEX BLOCK\u00AE cover can be accidentally opened during operation. What is the correct answer based on the technical specification?",options:["Yes \u2014 a locking clip must be added separately","No \u2014 the cover uses a rotatable insert in a captive design, preventing accidental removal","Yes \u2014 this is a known limitation mitigated by procedural controls","No \u2014 a tamper-evident seal is included in the standard kit"],correct:1,explanation:"The training pack specifies that the cover incorporates a rotatable insert in captive design. \u2018Captive\u2019 is the key word \u2014 it cannot be accidentally removed. This is an engineered safety feature, not a procedural control."},
+  {id:14,module:"Module 6",question:"A colleague tells a customer the standard Industrial PE Natural MULTIFLEX BLOCK\u00AE is fine for Zone 2 because \u2018the customer will ground it anyway.\u2019 What is wrong with this advice?",options:["Nothing \u2014 grounding is sufficient for Zone 2 compliance","The Industrial version cannot be grounded at all","Only the ATEX (PE-EL) version is compliant for Zone 2 \u2014 PE Natural is not conductive and cannot prevent static build-up regardless of grounding","The customer should use PVDF, not PE-EL, for Zone 2"],correct:2,explanation:"This is a critical safety error. PE Natural is not electrically conductive \u2014 it cannot dissipate static charge regardless of external grounding. In a Zone 2 environment with flammable liquids, this creates a genuine ignition risk. Only PE-EL (or PVDF/stainless) provides the conductivity needed for ATEX compliance."},
+  {id:15,module:"Module 7",question:"The online MULTIFLEX BLOCK\u00AE configurator walks users through four steps. What is the correct order?",options:["Configuration \u2192 Material \u2192 Overview \u2192 Add to basket","Material \u2192 Configuration \u2192 Overview \u2192 Add to basket","Overview \u2192 Material \u2192 Configuration \u2192 Add to basket","Material \u2192 Overview \u2192 Configuration \u2192 Add to basket"],correct:1,explanation:"The correct sequence is: (1) Material/Version, (2) Configuration of ports, (3) Overview/review, (4) Add to basket. Starting with material selection makes sense \u2014 the version drives everything else."},
+  {id:16,module:"Module 7",question:"What DN sizes is the MULTIFLEX BLOCK\u00AE compatible with?",options:["DN 100, DN 150, DN 200","DN 150, DN 200, DN 400","DN 200, DN 300, DN 400","DN 100, DN 200, DN 400"],correct:1,explanation:"The MULTIFLEX BLOCK\u00AE fits standard IBC covers of DN 150, DN 200, and DN 400. DN 100 and DN 300 are not listed. Always confirm the DN size with the customer before ordering."},
+  {id:17,module:"Module 7",question:"A customer is handling hydrochloric acid in IBCs (non-ATEX site). Which configuration from the training pack is the most appropriate starting point?",options:["Basic Industrial \u2014 hose nozzle 2\u201D, milk pipe thread 1\u00BC\u201D, blind plugs","Food version with Tri-Clamp connections","Industrial or PVDF version, plus acid vapour separator, pH indicator cartridge, filler tube, ball check valve, and suction lance","ATEX version only \u2014 HCl is a flammable liquid"],correct:2,explanation:"Module 7 uses HCl as a specific worked example and lists exactly this combination. HCl is corrosive but not flammable \u2014 ATEX is not required unless the site is classified. The acid vapour separator and pH indicator are essential for safe venting."},
+  {id:18,module:"Module 8",question:"Kwerk GmbH is headquartered in which German town?",options:["Frankfurt am Main","D\u00FCsseldorf","Montabaur","Koblenz"],correct:2,explanation:"Kwerk GmbH is located at Bahnhofsplatz 6, D-56410 Montabaur, Germany. This appears on the brochure, the product page, and the Quick Reference Card in the training pack."},
+  {id:19,module:"Module 9",question:"In the context of the MULTIFLEX BLOCK\u00AE, what does \u2018T-bore\u2019 describe?",options:["A tapered bore thread profile used for gas-tight sealing","A port configuration where the bore passes all the way through, creating a T-shaped flow path allowing two connections at one level","A type of valve bore used in the ATEX version only","The thread profile of the DN 150 screw cap"],correct:1,explanation:"The glossary in Module 9 defines T-bore precisely: a port configuration where the bore passes through the block creating a T-shaped flow path. This allows simultaneous connection of two components at the same horizontal level."},
+  {id:20,module:"Quick Reference",question:"A customer needs to handle a highly concentrated acid at elevated temperature in a non-ATEX environment. The standard Industrial PE Natural version has been suggested. What should you recommend instead, and why?",options:["Food version \u2014 it has higher chemical resistance due to FDA certification","ATEX version \u2014 all strong acids require ATEX equipment","PVDF version \u2014 it offers superior chemical resistance and temperature capability where PE alone is insufficient","PE Natural is suitable \u2014 concentration and temperature do not affect material selection"],correct:2,explanation:"PVDF is the correct choice for concentrated acids at elevated temperatures. It is one of the most chemically resistant thermoplastics available. PE Natural has limits on concentration and temperature that PVDF exceeds. FDA certification has nothing to do with chemical resistance in industrial applications."}
 ];
 
 const PASS_MARK = 15;
 const TOTAL = QUESTIONS.length;
 
 function getTimestamp() {
-  return new Date().toLocaleString('en-GB', {day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+  return new Date().toLocaleString('en-GB',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
 }
-
-function ScoreColor(pct) {
-  return pct >= 75 ? 'var(--green)' : pct >= 50 ? '#c47a00' : 'var(--red)';
+function scoreColor(pct) {
+  return pct >= 75 ? 'var(--green)' : pct >= 50 ? '#b86e00' : 'var(--red)';
 }
 
 function App() {
-  const [screen, setScreen] = useState('register');
+  const [screen, setScreen]       = useState('register');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName]   = useState('');
   const [nameError, setNameError] = useState('');
-  const [current, setCurrent]   = useState(0);
-  const [selected, setSelected] = useState(null);
+  const [current, setCurrent]     = useState(0);
+  const [selected, setSelected]   = useState(null);
   const [confirmed, setConfirmed] = useState(false);
-  const [answers, setAnswers]   = useState([]);
-  const [filter, setFilter]     = useState('all');
+  const [answers, setAnswers]     = useState([]);
+  const [filter, setFilter]       = useState('all');
   const [reviewIdx, setReviewIdx] = useState(null);
-  const [startTime] = useState(Date.now);
+  const [submitted, setSubmitted] = useState(false);
+  const [startTime]               = useState(() => Date.now());
   const [finishTime, setFinishTime] = useState(null);
-  const [timestamp]  = useState(getTimestamp);
+  const [timestamp]               = useState(() => getTimestamp());
 
   const fullName = (firstName.trim() + ' ' + lastName.trim()).trim();
-  const q = QUESTIONS[current];
-  const score = answers.filter(a => a.selected === a.correct).length;
+  const q        = QUESTIONS[current];
+  const score    = answers.filter(a => a.selected === a.correct).length;
 
   function startQuiz() {
-    if (!firstName.trim() || !lastName.trim()) {
-      setNameError('Please enter both your first name and last name to continue.');
-      return;
-    }
+    if (!firstName.trim() || !lastName.trim()) { setNameError('Please enter both your first and last name to continue.'); return; }
     setNameError('');
     setScreen('quiz');
   }
@@ -370,100 +208,69 @@ function App() {
   function confirmAnswer() {
     if (selected === null) return;
     setConfirmed(true);
-    setAnswers(prev => [...prev, { questionId: q.id, selected, correct: q.correct, module: q.module }]);
+    setAnswers(prev => [...prev, {questionId:q.id, selected, correct:q.correct, module:q.module}]);
   }
 
   function nextQuestion() {
-    if (current === TOTAL - 1) {
-      setFinishTime(Date.now());
-      setScreen('results');
-    } else {
-      setCurrent(c => c + 1);
-      setSelected(null);
-      setConfirmed(false);
-    }
+    if (current === TOTAL - 1) { setFinishTime(Date.now()); setScreen('results'); }
+    else { setCurrent(c => c+1); setSelected(null); setConfirmed(false); }
+  }
+
+  function submitResults() {
+    const pct    = Math.round((score / TOTAL) * 100);
+    const passed = score >= PASS_MARK;
+    const url    = buildFormUrl(fullName, score, TOTAL, pct, passed, timestamp);
+    window.open(url, '_blank');
+    setSubmitted(true);
   }
 
   function retake() {
     setCurrent(0); setSelected(null); setConfirmed(false);
     setAnswers([]); setFilter('all'); setReviewIdx(null);
-    setScreen('register');
-    setFirstName(''); setLastName('');
+    setSubmitted(false); setFinishTime(null);
+    setScreen('register'); setFirstName(''); setLastName('');
   }
 
-  // ── REGISTER SCREEN ──────────────────────────────────────────
+  // REGISTER
   if (screen === 'register') return (
     <div>
       <header className="page-header">
-        <div>
-          <div className="logo">MULTIFLEX BLOCK<sup>®</sup></div>
-          <div className="sub">Product Knowledge Assessment</div>
-        </div>
-        <div className="header-right">
-          <div style={{fontSize:11,color:'var(--text-3)'}}>IPS Training — Kwerk GmbH</div>
-        </div>
+        <div><div className="logo">MULTIFLEX BLOCK&#174; Assessment</div><div className="sub">IPS Training &mdash; Kwerk GmbH</div></div>
       </header>
       <div className="container">
-        <h1 style={{marginBottom:6}}>Product Knowledge Assessment</h1>
-        <p style={{marginBottom:0}}>MULTIFLEX BLOCK<sup>®</sup> — IPS Internal Training</p>
-
+        <h1 style={{fontSize:22,fontWeight:600,marginBottom:6}}>Product Knowledge Assessment</h1>
+        <p style={{fontSize:14,color:'var(--text-2)',marginBottom:0}}>MULTIFLEX BLOCK&#174; &mdash; IPS Internal Training</p>
         <div className="meta-grid">
           <div className="meta-card"><div className="val">20</div><div className="lbl">Questions</div></div>
           <div className="meta-card"><div className="val">9</div><div className="lbl">Modules covered</div></div>
           <div className="meta-card"><div className="val">{PASS_MARK}/20</div><div className="lbl">Pass mark</div></div>
           <div className="meta-card"><div className="val">~15 min</div><div className="lbl">Est. time</div></div>
         </div>
-
         <div className="info-box">
           <div className="title">Before you begin</div>
-          <p>These questions are drawn directly from the MULTIFLEX BLOCK<sup>®</sup> training pack. Several are designed to distinguish people who read the material carefully from those who skimmed it.</p>
-          <p>Each answer includes a full explanation. Read them even if you answer correctly — context matters when talking to customers.</p>
+          <p>These questions are drawn directly from the MULTIFLEX BLOCK&#174; training pack. Several are designed to distinguish people who read the material carefully from those who skimmed it.</p>
+          <p>When you finish, you will be asked to submit your result. This takes one click and sends your name, score, and pass/fail status to the training record.</p>
         </div>
-
         <div className="name-form">
           <label htmlFor="fname">Your name</label>
           <div className="name-row">
-            <input
-              id="fname"
-              className="name-input"
-              type="text"
-              placeholder="First name"
-              value={firstName}
-              onChange={e => { setFirstName(e.target.value); setNameError(''); }}
-              onKeyDown={e => e.key === 'Enter' && document.getElementById('lname').focus()}
-              autoComplete="given-name"
-            />
-            <input
-              id="lname"
-              className="name-input"
-              type="text"
-              placeholder="Last name"
-              value={lastName}
-              onChange={e => { setLastName(e.target.value); setNameError(''); }}
-              onKeyDown={e => e.key === 'Enter' && startQuiz()}
-              autoComplete="family-name"
-            />
+            <input id="fname" className="name-input" type="text" placeholder="First name" value={firstName} onChange={e=>{setFirstName(e.target.value);setNameError('');}} onKeyDown={e=>e.key==='Enter'&&document.getElementById('lname').focus()} autoComplete="given-name" />
+            <input id="lname" className="name-input" type="text" placeholder="Last name"  value={lastName}  onChange={e=>{setLastName(e.target.value);setNameError('');}}  onKeyDown={e=>e.key==='Enter'&&startQuiz()} autoComplete="family-name" />
           </div>
           {nameError && <p style={{fontSize:13,color:'var(--red)',marginTop:2}}>{nameError}</p>}
         </div>
-
-        <button className="btn btn-primary btn-full" onClick={startQuiz}>
-          Start assessment →
-        </button>
+        <button className="btn btn-primary btn-full" onClick={startQuiz}>Start assessment &rarr;</button>
       </div>
     </div>
   );
 
-  // ── QUIZ SCREEN ───────────────────────────────────────────────
+  // QUIZ
   if (screen === 'quiz') {
     const progress = Math.round((current / TOTAL) * 100);
     return (
       <div>
         <header className="page-header">
-          <div>
-            <div className="logo">MULTIFLEX BLOCK<sup>®</sup> Assessment</div>
-            <div className="sub">{fullName}</div>
-          </div>
+          <div><div className="logo">MULTIFLEX BLOCK&#174; Assessment</div><div className="sub">{fullName}</div></div>
           <div style={{fontSize:12,color:'var(--text-3)'}}>{current+1} / {TOTAL}</div>
         </header>
         <div className="container">
@@ -472,38 +279,30 @@ function App() {
             <span className="q-count">Question {current+1} of {TOTAL}</span>
           </div>
           <div className="progress-track"><div className="progress-fill" style={{width:`${progress}%`}} /></div>
-
           <p className="question-text">{q.question}</p>
-
           <div className="options">
-            {q.options.map((opt, i) => {
+            {q.options.map((opt,i) => {
               let cls = 'option-btn';
-              if (confirmed) {
-                if (i === q.correct) cls += ' correct';
-                else if (i === selected) cls += ' wrong';
-              } else if (selected === i) cls += ' selected';
+              if (confirmed) { if (i===q.correct) cls+=' correct'; else if (i===selected) cls+=' wrong'; }
+              else if (selected===i) cls+=' selected';
               return (
-                <button key={i} className={cls} disabled={confirmed} onClick={() => setSelected(i)}>
-                  <span className="option-letter">
-                    {confirmed && i === q.correct ? '✓' : confirmed && i === selected ? '✗' : String.fromCharCode(65+i)}
-                  </span>
+                <button key={i} className={cls} disabled={confirmed} onClick={()=>setSelected(i)}>
+                  <span className="option-letter">{confirmed&&i===q.correct?'✓':confirmed&&i===selected?'✗':String.fromCharCode(65+i)}</span>
                   {opt}
                 </button>
               );
             })}
           </div>
-
           {confirmed && (
             <div className={`explanation ${selected===q.correct?'correct-exp':'wrong-exp'}`}>
-              <div className="exp-label">{selected===q.correct ? 'Correct' : 'Incorrect'}</div>
+              <div className="exp-label">{selected===q.correct?'Correct':'Incorrect'}</div>
               <div className="exp-text">{q.explanation}</div>
             </div>
           )}
-
           <div className="btn-row">
             {!confirmed
               ? <button className="btn btn-primary btn-full" disabled={selected===null} onClick={confirmAnswer}>Confirm answer</button>
-              : <button className="btn btn-primary btn-full" onClick={nextQuestion}>{current===TOTAL-1 ? 'See results' : 'Next question →'}</button>
+              : <button className="btn btn-primary btn-full" onClick={nextQuestion}>{current===TOTAL-1?'See results':'Next question \u2192'}</button>
             }
           </div>
         </div>
@@ -511,16 +310,14 @@ function App() {
     );
   }
 
-  // ── RESULTS SCREEN ────────────────────────────────────────────
+  // RESULTS
   if (screen === 'results') {
-    const pct     = Math.round((score / TOTAL) * 100);
-    const passed  = score >= PASS_MARK;
+    const pct    = Math.round((score / TOTAL) * 100);
+    const passed = score >= PASS_MARK;
     const wrong   = answers.filter(a => a.selected !== a.correct);
     const correct = answers.filter(a => a.selected === a.correct);
-    const elapsed = finishTime ? Math.round((finishTime - startTime) / 60000) : null;
-
     const filtered = filter==='all' ? answers : filter==='wrong' ? wrong : correct;
-
+    const elapsed  = finishTime ? Math.round((finishTime - startTime) / 60000) : null;
     const moduleBreakdown = [...new Set(QUESTIONS.map(q=>q.module))].map(mod => {
       const ma = answers.filter(a=>a.module===mod);
       const mc = ma.filter(a=>a.selected===a.correct).length;
@@ -533,21 +330,20 @@ function App() {
       return (
         <div>
           <header className="page-header">
-            <div><div className="logo">MULTIFLEX BLOCK<sup>®</sup> — Review</div><div className="sub">{fullName}</div></div>
-            <button className="btn no-print" onClick={()=>setReviewIdx(null)}>← Back to results</button>
+            <div><div className="logo">MULTIFLEX BLOCK&#174; &mdash; Review</div><div className="sub">{fullName}</div></div>
+            <button className="btn" onClick={()=>setReviewIdx(null)}>&larr; Back to results</button>
           </header>
           <div className="container">
-            <p style={{fontSize:11,fontWeight:600,color:'var(--text-3)',textTransform:'uppercase',letterSpacing:'0.05em',marginBottom:8}}>{rq.module} — Question {reviewIdx+1}</p>
+            <p style={{fontSize:11,fontWeight:600,color:'var(--text-3)',textTransform:'uppercase',letterSpacing:'0.05em',marginBottom:8}}>{rq.module} &mdash; Question {reviewIdx+1}</p>
             <p className="question-text">{rq.question}</p>
             <div className="options">
               {rq.options.map((opt,i)=>{
-                const isC = i===rq.correct, wasS = i===ra.selected;
-                let cls = 'option-btn';
-                if (isC) cls+=' correct'; else if (wasS) cls+=' wrong';
+                const isC=i===rq.correct, wasS=i===ra.selected;
+                let cls='option-btn';
+                if(isC) cls+=' correct'; else if(wasS) cls+=' wrong';
                 return (
                   <div key={i} className={cls} style={{cursor:'default'}}>
-                    <span className="option-letter">{isC?'✓':wasS?'✗':String.fromCharCode(65+i)}</span>
-                    {opt}
+                    <span className="option-letter">{isC?'✓':wasS?'✗':String.fromCharCode(65+i)}</span>{opt}
                   </div>
                 );
               })}
@@ -563,50 +359,57 @@ function App() {
 
     return (
       <div>
-        <header className="page-header no-print">
-          <div><div className="logo">MULTIFLEX BLOCK<sup>®</sup> — Results</div><div className="sub">{fullName}</div></div>
-          <button className="btn" onClick={()=>window.print()}>Print / Save PDF</button>
+        <header className="page-header">
+          <div><div className="logo">MULTIFLEX BLOCK&#174; &mdash; Results</div><div className="sub">{fullName}</div></div>
         </header>
         <div className="container">
-
           <div className="results-hero">
             <div className="results-name">{fullName}</div>
-            <div className="big-score" style={{color:ScoreColor(pct)}}>{pct}%</div>
-            <div className="result-status" style={{color:passed?'var(--green)':'var(--red)'}}>{passed ? 'Pass' : 'Not yet \u2014 further study required'}</div>
-            <div className="result-sub">{score} correct out of {TOTAL} \u2014 pass mark {PASS_MARK}/{TOTAL}</div>
+            <div className="big-score" style={{color:scoreColor(pct)}}>{pct}%</div>
+            <div className="result-status" style={{color:passed?'var(--green)':'var(--red)'}}>{passed?'Pass':'Not yet \u2014 further study required'}</div>
+            <div className="result-sub">{score} correct out of {TOTAL} &mdash; pass mark {PASS_MARK}/{TOTAL}</div>
           </div>
 
-          {/* Printable result summary */}
+          {/* Submit box */}
+          <div className={`submit-box${submitted?' submitted':''}`}>
+            {!submitted ? (
+              <>
+                <div className="sb-title">&#128203; Submit your results</div>
+                <div className="sb-text">Click below to send your name, score, and result to the training record. This takes one click and opens a short confirmation form.</div>
+                <button className="btn btn-green btn-full" onClick={submitResults}>Submit results &rarr;</button>
+              </>
+            ) : (
+              <>
+                <div className="sb-title">&#10003; Results submitted</div>
+                <div className="sb-text">Your result has been sent to the training record. You can close this tab or retake the assessment below.</div>
+              </>
+            )}
+          </div>
+
+          {/* Summary card */}
           <div className="print-box">
             <div className="pb-row"><span className="pb-label">Candidate</span><span className="pb-value">{fullName}</span></div>
-            <div className="pb-row"><span className="pb-label">Assessment</span><span className="pb-value">MULTIFLEX BLOCK\u00AE Product Knowledge</span></div>
+            <div className="pb-row"><span className="pb-label">Assessment</span><span className="pb-value">MULTIFLEX BLOCK&#174; Product Knowledge</span></div>
             <div className="pb-row"><span className="pb-label">Date &amp; time</span><span className="pb-value">{timestamp}</span></div>
-            <div className="pb-row"><span className="pb-label">Score</span><span className="pb-value" style={{color:ScoreColor(pct)}}>{score}/{TOTAL} ({pct}%)</span></div>
+            <div className="pb-row"><span className="pb-label">Score</span><span className="pb-value" style={{color:scoreColor(pct)}}>{score}/{TOTAL} ({pct}%)</span></div>
             <div className="pb-row"><span className="pb-label">Result</span><span className="pb-value" style={{color:passed?'var(--green)':'var(--red)'}}>{passed?'PASS':'FAIL'}</span></div>
-            {elapsed && <div className="pb-row"><span className="pb-label">Time taken</span><span className="pb-value">{elapsed} minute{elapsed!==1?'s':''}</span></div>}
+            {elapsed!==null&&<div className="pb-row"><span className="pb-label">Time taken</span><span className="pb-value">{elapsed} minute{elapsed!==1?'s':''}</span></div>}
           </div>
 
           {/* Score bar */}
           <div className="score-bar-wrap">
-            <div className="score-bar-row">
-              <span className="lbl">Overall score</span>
-              <span className="val" style={{color:ScoreColor(pct)}}>{score}/{TOTAL} ({pct}%)</span>
-            </div>
-            <div className="score-track">
-              <div className="score-fill" style={{width:`${pct}%`,background:ScoreColor(pct)}} />
-            </div>
+            <div className="score-bar-row"><span className="lbl">Overall score</span><span className="val" style={{color:scoreColor(pct)}}>{score}/{TOTAL} ({pct}%)</span></div>
+            <div className="score-track"><div className="score-fill" style={{width:`${pct}%`,background:scoreColor(pct)}} /></div>
           </div>
 
           {/* Module breakdown */}
           <div className="section-label">Performance by module</div>
           {moduleBreakdown.map(({mod,correct:mc,total:mt})=>{
-            const mp = Math.round((mc/mt)*100);
+            const mp=Math.round((mc/mt)*100);
             return (
               <div className="mod-bar-row" key={mod}>
                 <span className="mod-name">{mod}</span>
-                <div className="mod-bar-track">
-                  <div className="mod-bar-fill" style={{width:`${mp}%`,background:ScoreColor(mp)}} />
-                </div>
+                <div className="mod-bar-track"><div className="mod-bar-fill" style={{width:`${mp}%`,background:scoreColor(mp)}} /></div>
                 <span className="mod-score">{mc}/{mt}</span>
               </div>
             );
@@ -614,37 +417,33 @@ function App() {
 
           <div className="divider" />
 
-          {/* Review section */}
-          <div className="filter-row no-print">
+          {/* Review */}
+          <div className="filter-row">
             {[['all',`All (${TOTAL})`],['wrong',`Missed (${wrong.length})`],['correct',`Correct (${score})`]].map(([f,lbl])=>(
-              <button key={f} className={`filter-btn ${filter===f?'active':''}`} onClick={()=>setFilter(f)}>{lbl}</button>
+              <button key={f} className={`filter-btn${filter===f?' active':''}`} onClick={()=>setFilter(f)}>{lbl}</button>
             ))}
           </div>
+          {filtered.map(a=>{
+            const fq=QUESTIONS.find(q=>q.id===a.questionId);
+            const idx=QUESTIONS.indexOf(fq);
+            const isC=a.selected===a.correct;
+            return (
+              <button key={a.questionId} className={`review-item ${isC?'ri-correct':'ri-wrong'}`} onClick={()=>setReviewIdx(idx)}>
+                <div className="review-item-top">
+                  <span className="review-item-mod">{fq.module} &mdash; Q{idx+1}</span>
+                  <span className={`review-item-status ${isC?'s-correct':'s-wrong'}`}>{isC?'Correct':'Missed'}</span>
+                </div>
+                <span className="review-item-q">{fq.question.length>95?fq.question.slice(0,95)+'\u2026':fq.question}</span>
+              </button>
+            );
+          })}
 
-          <div className="no-print">
-            {filtered.map(a=>{
-              const fq = QUESTIONS.find(q=>q.id===a.questionId);
-              const idx = QUESTIONS.indexOf(fq);
-              const isC = a.selected===a.correct;
-              return (
-                <button key={a.questionId} className={`review-item ${isC?'ri-correct':'ri-wrong'}`} onClick={()=>setReviewIdx(idx)}>
-                  <div className="review-item-top">
-                    <span className="review-item-mod">{fq.module} \u2014 Q{idx+1}</span>
-                    <span className={`review-item-status ${isC?'s-correct':'s-wrong'}`}>{isC?'Correct':'Missed'}</span>
-                  </div>
-                  <span className="review-item-q">{fq.question.length>95?fq.question.slice(0,95)+'\u2026':fq.question}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="divider no-print" />
-          <button className="btn btn-full no-print" onClick={retake}>Retake assessment</button>
+          <div className="divider" />
+          <button className="btn btn-full" onClick={retake}>Retake assessment</button>
         </div>
       </div>
     );
   }
-
   return null;
 }
 
